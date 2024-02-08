@@ -1,0 +1,49 @@
+Run : "go mod init github.com/lakshiya/go-microservices"
+to create a new go.mod file
+
+Use go get or go tidy to download packages
+
+For Docker and Kubernetes :
+
+Install Docker and Kubernetes
+
+Use minikube, run $ minikube start 
+
+Run "docker ps" for listing 
+Compose Dockerfile and run below command.
+
+eval $(minikube docker-env)
+
+docker build -t go-app-normal:latest .
+
+docker run -d -p 80:80 --name web go-app-normal:latest
+
+docker logs -f web
+
+Use minikube ip : to get the IP address of the Web server
+Use ping to check if the server is running
+
+Use docker image ls : to view the list of docker images 
+
+Create two files, service.yaml and deployments.yaml - For using docker-compose 
+
+Build and run it using : 
+
+docker-compose build
+docker-compose up -d
+docker-compose ps 
+docker-compose down
+
+Run this to deploy 
+kubectl apply -f kubernetes 
+kubectl get po,svc
+
+Use : kubectl delete -f kubernetes : to delete 
+
+Run using : docker run my-golang-app
+
+Create a Helm chart for the deployment 
+1. Install Helm using : brew install helm
+2. helm create go-app : Creates a folder called go-app inside microservices
+3. Edit the service.yaml and deployment.yaml files with port, image name details 
+4. Use : helm install web go-app : to install 
